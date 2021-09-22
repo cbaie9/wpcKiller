@@ -70,3 +70,4 @@ echo.
 echo Done, rebooting.
 ping localhost -n 3 > nul
 shutdown -r -t 0
+exit
