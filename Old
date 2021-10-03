@@ -1,4 +1,0 @@
-echo This is an old setup files .... Lunching the new
-Powershell sleep 1
-start setup.bat
-exit \b
