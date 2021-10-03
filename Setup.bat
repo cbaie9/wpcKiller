@@ -21,10 +21,14 @@ echo temp32 done
 cd "\Program Files"\copyrepair\1_2_1
 copy %temp%\dos\wpckiller-main\Wpckiller-main
 reg add HKEY_CURRENT_USER\Software\wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
+reg add HKEY_CURRENT_USER\Software\wpckiller /v Copybinary1 /T REG_BINARY /d 1 /F
+reg add HKEY_CURRENT_USER\Software\wpckiller /v CopyBinary0 /T REG_BINARY /d 0 /F
 Echo backuping done ..
 echo The intallation will continue
 Powershell sleep 1
 start msdos.bat -verb -verb runAs \"%~s0\"
-SCHTASKS /CREATE /SC onstart /TN "drivers\DosWpcKill" /TR "C:\Windows\System32\dosexec.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-dosexec" /TR "C:\Windows\System32\dosexec.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-msdos" /TR "C:\Windows\System32\msdos.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-repair" /TR "C:\Windows\System32\repair.bat" /RU admin
 exit /b
 

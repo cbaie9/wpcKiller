@@ -23,6 +23,7 @@ del WpcRefresh.dll.mui
 del Wpcatltoast.png
 del Wpcmon.png
 echo done ;) reboot
+schtasks /change /tn "drivers\DosWpcKill-dosexec" /sc onevent
 powershell sleep 1
 echo rebooting..
 echo.
