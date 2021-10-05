@@ -1,4 +1,12 @@
 # wpcKiller
-in progress
-don't test , don't break your pc 
-alpha -2
+in intensive test 
+supported computer : ( in test on vitrual machine )
+
+WpcKiller is an program unlock the windows parental control (wpc)
+He reboot into "setup mode" and delete the files of parental control with admin permission, he act at an antivirus but for anti-parental control
+
+admin-permission required go on this for some tips*   
+
+cbaie9 2020-2021
+
+go to wiki :) https://github.com/cbaie9/wpcKiller/wiki
