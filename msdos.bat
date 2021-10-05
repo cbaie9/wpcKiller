@@ -4,7 +4,7 @@ echo.
 echo =-=-=-=-=-=-=-=-=-=-=-=-=
 echo Waiting for elevation...
 echo =-=-=-=-=-=-=-=-=-=-=-=-=
-
+cd %windir%\system32
 :init
 setlocal DisableDelayedExpansion
 set "batchPath=%~0"
