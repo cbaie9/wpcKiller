@@ -1,6 +1,6 @@
 # wpcKiller
 in intensive test 
-supported computer : ( in test on vitrual machine )
+supported computer : ( in test on vitrual machine )  need powershell
 
 WpcKiller is an program unlock the windows parental control (wpc)
 He reboot into "setup mode" and delete the files of parental control with admin permission, he act at an antivirus but for anti-parental control
