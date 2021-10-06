@@ -46,26 +46,6 @@ reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v Enable
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v VerboseStatus /t REG_DWORD /d 1 /f > nul
 echo.
-
-if not exist %systemdrive%\dosexec.bat (
-	echo Dosexec not present, creating a default file.
-	@echo @echo off > %systemdrive%\dosexec.bat
-	@echo echo This is a default dosexec file, you can add commands here to run on the next recovery startup. >> %systemdrive%\dosexec.bat
-	@echo reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 0 /f >> %systemdrive%\dosexec.bat
-	@echo net start >> %systemdrive%\dosexec.bat 
-	@echo start explorer >> %systemdrive%\dosexec.bat 
-	@echo ping localhost -n 3 >> %systemdrive%\dosexec.bat 
-	@echo start taskmgr >> %systemdrive%\dosexec.bat 
-	@echo start patch.bat %systemdrive%\dosexec.bat
-	@echo cls >> %systemdrive%\dosexec.bat
-	@echo echo The system runs in the recovery /so-called MS-DOS/ mode, type "patch" for back to windows and patch the probleme>> %systemdrive%\dosexec.bat
-	echo.
-	echo =-=-=-=-=-= DOSEXEC.BAT =-=-=-=-=-=
-	type %systemdrive%\dosexec.bat
-	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-	pause
-)
-
 echo.
 echo Done, rebooting.
 ping localhost -n 3 > nul
