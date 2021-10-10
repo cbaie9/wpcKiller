@@ -14,13 +14,12 @@ powershell -Command "Invoke-WebRequest https://github.com/cbaie9/wpcKiller/archi
 Echo expend all files
 powershell -command "Expand-Archive -LiteralPath %temp%\dos/files.zip"
 echo Installing.. [ Please don't close if you want your computer safe ;) ]
-echo copying files.	Cd %program files%\Wpcfiles
-Cd %programdata%\Wpc	copy %temp%\Dos\files\wpcKiller-main
+echo copying files.	
+Cd %program files%\Wpcfiles
+copy %temp%\Dos\files\wpcKiller-main
+Cd %programdata%\Wpc	
 copy %temp%\dos\files\Wpckiller-main	
-cd \	
 CLS	
-echo copying files..	
-copy %temp%\dos\files\Wpckiller-main\exec	
 Echo done !	
 echo Updating registery \ Backuping in progress ..
 reg add HKEY_CURRENT_USER\Software\wpckiller /v temp32 /T REG_BINARY /d 1 /f
@@ -34,9 +33,9 @@ Echo backuping done ..
 timeout 1
 cls
 echo The intallation will continue
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-dosexec" /TR "C:\Windows\System32\dosexec.bat" /RU admin
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-msdos" /TR "C:\Windows\System32\msdos.bat" /RU admin
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-repair" /TR "C:\Windows\System32\repair.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-dosexec" /TR "%programdata%\Wpc\exec\dosexec.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-msdos" /TR "%programdata%\Wpcm\msdos.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-repair" /TR "C:\%programdata%\Wpc\repair.bat" /RU admin
 pause
 start msdos.bat -verb -verb -verb runAs /user:Administrator
 exit /b
