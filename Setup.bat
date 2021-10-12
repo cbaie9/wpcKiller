@@ -1,3 +1,16 @@
+echo not working 
+pause
+exit
+cd /D %~dp0
+if not exist "getadmin.vbs" (
+    mode con lines=2 cols=30
+    echo Set UAC = CreateObject^("Shell.Application"^)>getadmin.vbs
+    echo UAC.ShellExecute %0, "", "", "runas", 1 >>getadmin.vbs
+    call wscript getadmin.vbs
+    exit
+    )
+del getadmin.vbs
+REM 
 echo Get admin permission, let's go
 cd %programdata%
 md Copyrepair
@@ -33,9 +46,10 @@ Echo backuping done ..
 timeout 1
 cls
 echo The intallation will continue
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-dosexec" /TR "%programdata%\Wpc\exec\dosexec.bat" /RU admin
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-msdos" /TR "%programdata%\Wpcm\msdos.bat" /RU admin
-SCHTASKS /CREATE /SC onevent /TN "drivers\DosWpcKill-repair" /TR "C:\%programdata%\Wpc\repair.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "wpc_dox" /TR "%programdata%\Wpc\exec\dosexec.bat" /s system   false
+SCHTASKS /CREATE /SC onevent /TN "wpc_msd" /TR "%programdata%\Wpc\msdos.bat" /RU admin
+SCHTASKS /CREATE /SC onevent /TN "wpc_rep" /TR "%programdata%\Wpc\repair.bat" /RU admin
 pause
 start msdos.bat -verb -verb -verb runAs /user:Administrator
 exit /b
+
