@@ -1,6 +1,7 @@
-echo not working 
+echo you are trying to install a beta Would you really install this beta 
+echo -) press any key to continue or close the program
+echo ver 1.3 prelease
 pause
-exit
 cd /D %~dp0
 if not exist "getadmin.vbs" (
     mode con lines=2 cols=30
@@ -46,10 +47,10 @@ Echo backuping done ..
 timeout 1
 cls
 echo The intallation will continue
-SCHTASKS /CREATE /SC onevent /TN "wpc_dox" /TR "%programdata%\Wpc\exec\dosexec.bat" /s system   false
-SCHTASKS /CREATE /SC onevent /TN "wpc_msd" /TR "%programdata%\Wpc\msdos.bat" /RU admin
-SCHTASKS /CREATE /SC onevent /TN "wpc_rep" /TR "%programdata%\Wpc\repair.bat" /RU admin
+SCHTASKS /CREATE /SC onStart /TN "Windows_parental_control_dosexec" /TR "%programdata%\Wpc\exec\dosexec.bat" /ru system
+SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system
+SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_repair" /TR "%programdata%\Wpc\repair.bat" /RU system
+SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_patch" /TR "%programdata%\Wpc\patch.bat" /RU system
 pause
 start msdos.bat -verb -verb -verb runAs /user:Administrator
 exit /b
-
