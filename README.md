@@ -1,4 +1,5 @@
 # wpcKiller
+## ver 1.2.3
 in intensive test 
 supported computer : ( in test on vitrual machine )  need powershell
 
