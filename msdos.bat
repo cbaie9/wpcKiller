@@ -39,7 +39,7 @@ ping localhost -n 2 > nul
 echo Entering MS-DOS (recovery) mode...
 echo.
 echo Tweaking the registry...
-reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\exec\dosexec.bat" /f
+reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\dosexec.bat" /f
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 1 /f > nul
 reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableCursorSuppression /t REG_DWORD /d 0 /f > nul
