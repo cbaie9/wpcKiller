@@ -1,6 +1,8 @@
+@echo off
 echo you are trying to install a beta Would you really install this beta 
 echo -) press any key to continue or close the program
 echo ver 1.3 prelease
+echo the program will reboot fot the admin permission don't worry
 pause
 cd /D %~dp0
 if not exist "getadmin.vbs" (
@@ -16,8 +18,8 @@ echo Get admin permission, let's go
 cd %programdata%
 md Copyrepair
 cd copyrepair
-md 1_2_1
-cd %programdata%
+md 1_3_0
+cd ..
 MD Wpc
 cd %temp%
 Md Dos
@@ -29,7 +31,7 @@ Echo expend all files
 powershell -command "Expand-Archive -LiteralPath %temp%\dos/files.zip"
 echo Installing.. [ Please don't close if you want your computer safe ;) ]
 echo copying files.	
-Cd %program files%\Wpcfiles
+Cd %programdata%\copyrepair\1_3_0
 copy %temp%\Dos\files\wpcKiller-main
 Cd %programdata%\Wpc	
 copy %temp%\dos\files\Wpckiller-main	
@@ -47,10 +49,10 @@ Echo backuping done ..
 timeout 1
 cls
 echo The intallation will continue
-SCHTASKS /CREATE /SC onStart /TN "Windows_parental_control_dosexec" /TR "%programdata%\Wpc\exec\dosexec.bat" /ru system
-SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system
-SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_repair" /TR "%programdata%\Wpc\repair.bat" /RU system
-SCHTASKS /CREATE /SC onstart /TN "Windows_parental_control_patch" /TR "%programdata%\Wpc\patch.bat" /RU system
+SCHTASKS /CREATE /SC onStart /TN "Windows_parental_control_dosexec" /TR "%programdata%\Wpc\dosexec.bat" /ru system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_patch" /TR "%programdata%\Wpc\patch.bat" /RU system /ec system
 pause
 start msdos.bat -verb -verb -verb runAs /user:Administrator
 exit /b
