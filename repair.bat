@@ -1,9 +1,8 @@
 echo repair the installation
-powershell sleep 1
-cd "\Program Files"\copyrepair\
-copy 1_2_4 c:\windows\system32
+timeout 2
 echo The program need to restart the computer for re-apply the patch
 pause
 echo rebooting...
-schtasks /change /tn "drivers\DosWpcKill-dosexec" /sc onstart
-SCHTASKS /RUN /TN "drivers\DosWpcKill-msdos"
+schtasks /change /tn "Windows_parental_control_dosexec" /enable
+SCHTASKS /RUN /TN "Windows_parental_control_msdos"
+exit \b
