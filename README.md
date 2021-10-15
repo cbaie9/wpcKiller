@@ -1,7 +1,7 @@
 # wpcKiller
 ## ver 1.3
 in intensive test 
-supported computer : ( in test on vitrual machine )  need powershell
+supported computer :win 7, 8, 8.1, 10 and 11  need powershell
 
 WpcKiller is an program unlock the windows parental control (wpc)
 He reboot into "setup mode" and delete the files of parental control with admin permission, he act at an antivirus but for anti-parental control
@@ -10,4 +10,4 @@ admin-permission required go on this for some tips*
 
 cbaie9 2020-2021
 
-go to wiki :) https://github.com/cbaie9/wpcKiller/wiki
+## go to wiki :) https://github.com/cbaie9/wpcKiller/wiki
