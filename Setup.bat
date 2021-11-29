@@ -49,10 +49,10 @@ Echo backuping done ..
 timeout 1
 cls
 echo The intallation will continue
-SCHTASKS /CREATE /SC onStart /TN "Windows_parental_control_dosexec" /TR "%programdata%\Wpc\dosexec.bat" /ru system /ec system
-SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system /ec system
-SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system
-SCHTASKS /CREATE /SC onevent /TN "Windows_parental_control_patch" /TR "%programdata%\Wpc\patch.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onStart /TN "Windows_pc_patch_dosexec" /TR "%programdata%\Wpc\dosexec.bat" /ru system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_patch" /TR "%programdata%\Wpc\patch.bat" /RU system /ec system
 pause
 start msdos.bat -verb -verb -verb runAs /user:Administrator
 exit /b
