@@ -41,7 +41,7 @@ reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableCursorSuppression /t REG_DWORD /d 1 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 1 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v VerboseStatus /t REG_DWORD /d 0 /f > nul
-schtasks /change /disable /tn Windows_parental_control_dosexec
+schtasks /change /disable /tn Windows_pc_patch_dosexec
 echo.
 echo Done, rebooting. (3 attempts)
 echo Attempt #1
