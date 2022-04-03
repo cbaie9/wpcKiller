@@ -7,6 +7,8 @@ ping localhost -n 3
 echo starting...
 powershell stop-service wpcmonsvc
 powershell sleep 1 
+If exist C:\Program Files (x86)\Contrôle Parental Orange goto cp_or
+:cp_win
 cd %windir%\system32
 del WpcMigration.uplevel.dll
 del Wpc.dll
@@ -60,3 +62,9 @@ shutdown -r -t 0
 ping localhost -n 3 > nul
 echo Failed. Attempt #3
 shutdown -r -t 0
+:cp_or
+cd C:\Program Files (x86)\
+rmdir "Contrôle Parental Orange" /S /Q
+Cd %programdata%
+rmdir "Contrôle Parental Orange" /S /Q
+goto cp_win
