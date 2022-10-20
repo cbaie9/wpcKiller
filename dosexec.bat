@@ -73,6 +73,7 @@ ping localhost -n 3 > nul
 echo Failed. Attempt #3
 shutdown -r -t 0
 cmd
+exit /B
 :cp_or
 cd C:\Program Files (x86)\
 rmdir "Contrôle Parental Orange" /S /Q

