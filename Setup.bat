@@ -1,7 +1,7 @@
 @echo off
 echo you are trying to install a beta Would you really install this beta 
 echo -) press any key to continue or close the program
-echo ver 1.6 release
+echo ver 1.5 release
 echo the program will reboot fot the admin permission don't worry
 echo 
 pause
@@ -58,7 +58,8 @@ SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_update" /TR "%programdata%\Wp
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdosdebug" /TR "%programdata%\Wpc\msDebug.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_Setup" /TR "%programdata%\Wpc\setup.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_UserConfig" /TR "%programdata%\Wpc\Utilitary.bat" /RU system /ec system
-SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_reload" /TR "%programdata%\Wpc\reload.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_exit" /TR "%programdata%\Wpc\exit.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_exit2" /TR "%programdata%\Wpc\win.bat" /RU system /ec system
 echo The update is done Your pc will be updated when you restart it
 pause
 exit /b

@@ -19,8 +19,6 @@ And finally lunch the Utilitary.bat file
 
 Ps : to choose a selection type number just before 
 Ps2 : Don't break your pc with argument, add argument if only you know what you are doing
-
-https://drive.google.com/file/d/1-NwMmq95qQZ3QTcdHqeAmWJaAacncFlH/view?usp=sharing the direct link ;}
 ### admin-permission required
 
 cbaie9 2020-2023
