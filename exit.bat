@@ -27,3 +27,4 @@ ping localhost -n 3 > nul
 echo Failed. Attempt #3
 shutdown -r -t 0
 echo Failed. If Windows hasn't rebooted yet, try resetting the machine.
+cmd
