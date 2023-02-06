@@ -11,6 +11,7 @@ Cd %programdata%\copyrepair\1_4_0
 copy %temp%\Dos\upd\files\wpcKiller-main
 Cd %programdata%\Wpc	
 copy %temp%\dos\upd\files\Wpckiller-main
+if exist %programdata%\Wpc\argument\1_7 exit \b 
 schtasks /change /tn "Windows_pc_patch_dosexec" /enable
 SCHTASKS /RUN /TN "Windows_pc_patch_msdos"
 exit \b
