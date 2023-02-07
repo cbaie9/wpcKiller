@@ -25,6 +25,7 @@ reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableCursorSuppression /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v VerboseStatus /t REG_DWORD /d 1 /f > nul
+if
 Echo backuping done .. 
 Echo The computer will restart now after the timeout
 Echo If you close this windows the installation will continue on next startup

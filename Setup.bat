@@ -1,4 +1,11 @@
 @echo off
+echo 1) english
+echo 2) français
+choice /c 12 /n /m ""
+echo %errorlevel% 
+if %errorlevel% == 1 goto en
+if %errorlevel% == 2 goto fr
+:fr
 echo you are trying to install a beta Would you really install this beta 
 echo -) press any key to continue or close the program
 echo ver 1.5 release
@@ -60,6 +67,7 @@ SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_Setup" /TR "%programdata%\Wpc
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_UserConfig" /TR "%programdata%\Wpc\Utilitary.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_exit" /TR "%programdata%\Wpc\exit.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_exit2" /TR "%programdata%\Wpc\win.bat" /RU system /ec system
+SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_unistall" /TR "%temp%\sed_dwpc\secure_env_del.bat" /RU system /ec system
 echo The update is done Your pc will be updated when you restart it
 pause
 exit /b

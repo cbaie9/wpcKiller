@@ -9,6 +9,7 @@ echo Starting the file...
 ping localhost -n 2 > nul
 echo Exiting MS-DOS (recovery) mode...
 echo.
+:start
 echo Tweaking the registry...
 reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "" /f
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 0 /f > nul
@@ -28,3 +29,4 @@ echo Failed. Attempt #3
 shutdown -r -t 0
 echo Failed. If Windows hasn't rebooted yet, try resetting the machine.
 cmd
+goto start
