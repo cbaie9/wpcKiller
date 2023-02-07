@@ -8,10 +8,24 @@ echo starting...
 powershell stop-service wpcmonsvc
 powershell sleep 1 
 If exist C:\Program Files (x86)\Contrôle Parental Orange goto cp_or
+IF exist %programdata%\wpc\languagepack\fr_fr goto fr_1 else goto en_1
+:fr_1
 echo Check driver 1 : status ok
+goto cp_win
+:en_1
+echo Verification du driver 1 : status bon
+goto cp_win
 :cp_win
-echo update 
+IF exist %programdata%\wpc\languagepack\fr_fr goto fr_2 else goto en_2
+:en_2
+echo updating.. 
 title Updating system
+goto cpwin2
+:fr_2
+echo Driver en cours d'installation
+title Mise à jour en cours
+goto cpwin2
+:cpwin2
 cd %windir%\system32
 del WpcMigration.uplevel.dll /q
 del Wpc.dll /q
@@ -52,7 +66,21 @@ del %systemroot%\WinSxS\amd64_microsoft-windows-p..trols-wpcproxystubs_31bf3856a
 del %systemroot%\WinSxS\amd64_wpcip.inf.resources_31bf3856ad364e35_10.0.22000.1_fr-fr_54d5b3cdc7780631\wpcip.inf_loc /q
 rmdir %systemroot%\WinSxS\wow64_microsoft-windows-p..lcontrols-webfilter_31bf3856ad364e35_10.0.22000.318_none_3103f122dcfac4fc
 Del C:\Windows\SysWOW64\WpcWebFilter.dll /q
-echo Driver n°2 updated at v1.5.0
+IF exist %programdata%\wpc\languagepack\fr_fr goto fr_3 else goto en_3
+:en_3
+echo Driver n°2 mis a jour at v1.7.0
+title Rédemarrage..
+powershell sleep 1
+echo Rédemarrage
+echo.
+echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=--=-=
+echo tourne sous NT AUTHORITY, pas besoin d'autorisation
+echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=--=-=
+echo.
+echo Starting the file... 
+goto cpwin3
+:fr_3 
+echo Driver n°2 updated at v1.7.0
 title Rebooting 
 powershell sleep 1
 echo rebooting..
@@ -61,7 +89,10 @@ echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 echo Running as NT AUTHORITY, no elevation needed
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 echo.
-echo Starting the file... 
+echo Lancement du fichier
+echo redemarrage de l'ordinateur après le chargement de la Sauvegarde du registre 
+goto cpwin3
+:cpwin3
 ping localhost -n 2 > nul
 echo Exiting the install mode
 echo.
@@ -123,4 +154,4 @@ reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVers
 reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallationProgress
 del %temp% /s /q
 goto cp_win
- # made by cb9,cbaie9 2020-2022
+# made by cb9,cbaie9 2020-2023
