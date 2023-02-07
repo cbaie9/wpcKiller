@@ -26,3 +26,5 @@ goto menu
 :delete
 mkdir %temp%\sed_dwpc
 copy %programdata%\wpc\secure_env_del.bat
+start %temp%\sed_dwpc\secure_env_del.bat
+exit /B 
