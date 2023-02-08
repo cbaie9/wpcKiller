@@ -1,5 +1,18 @@
 @echo off
 setlocal enableextensions
+echo 1) english
+echo 2) français
+choice /c 12 /n /m ""
+echo %errorlevel% 
+if %errorlevel% == 1 goto en
+if %errorlevel% == 2 goto fr
+:fr
+echo you are trying to install a beta Would you really install this beta 
+echo -) press any key to continue or close the program
+echo ver 1.5 release
+echo the program will reboot fot the admin permission don't worry
+echo 
+pause
 cd /D %~dp0
 if not exist "getadmin.vbs" (
     mode con lines=2 cols=30
