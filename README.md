@@ -1,5 +1,5 @@
 # wpcKiller
-## ver 1.6.3
+## ver 1.7.0
 bats and exes version
 supporting windows 7, 8, 8.1, 10 and 11  and need powershell 
 -) https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi
@@ -22,5 +22,3 @@ Ps2 : Don't break your pc with argument, add argument if only you know what you 
 ### admin-permission required
 
 cbaie9 2020-2023
-
-## go to wiki :) https://github.com/cbaie9/wpcKiller/wiki
