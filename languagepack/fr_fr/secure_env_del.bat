@@ -2,7 +2,7 @@
 title Wpckiller Deleting Tool
 cls
 :menu
-echo Do you (all user)
+echo Do you want to delete Wpckiller from this computer (all user)
 powershell sleep 2
 choice /c yn /m "[Y] [N]"
 if %errorlevel% == 1 goto dl2
