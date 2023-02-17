@@ -1,5 +1,5 @@
 # wpcKiller
-## ver 1.6.3
+## ver 1.6.5
 bats and exes version
 supporting windows 7, 8, 8.1, 10 and 11  and need powershell 
 -) https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi
