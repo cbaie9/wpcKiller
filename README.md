@@ -1,7 +1,7 @@
 # wpcKiller
 ## ver 1.7.0
 bats and exes version
-supporting windows 7, 8, 8.1, 10 and 11  and need powershell (include in win 8 --> 11 )
+supporting windows 8.1, 10 and 11  and need powershell (include in win 8 --> 11 )
 -> 1.7.1 and up : download required lib (powershell)
 
 WpcKiller is an program unlock the windows parental control (wpc)
