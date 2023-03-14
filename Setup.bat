@@ -1,5 +1,7 @@
 @echo off
 setlocal enableextensions
+set ver=1_7_0
+set uzpath=%temp%\Dos
 cd /D %~dp0
 if not exist "getadmin.vbs" (
     mode con lines=2 cols=30
@@ -19,20 +21,21 @@ if %errorlevel% == 2 goto fr
 :fr
 echo  Vous essayer d'installer une beta 
 echo -) appuiyer sur une touche pour commencer
-echo version 1.7 beta
-Mkdir %programdata%\Copyrepair\1_7_0
-Mkdir %temp%\Dos
-cd %TEMP%\Dos
+echo version %ver% beta
+winget search Microsoft.PowerShell
+Mkdir %programdata%\Copyrepair\%ver%
+Mkdir %uzpath%
+cd %uzpath%
 cls
 echo Téléchargement des fichier requis
 if not exist files.zip powershell -Command "Invoke-WebRequest https://github.com/cbaie9/wpcKiller/archive/refs/heads/main.zip -Outfile  files.zip"
 Echo de-zippage des fichier
-if not exist %temp%\dos\files powershell -command "Expand-Archive -LiteralPath %temp%\dos/files.zip"
+if not exist %uzpath%\files powershell -command "Expand-Archive -LiteralPath %uzpath%\files.zip"
 echo Copie de fichier..
-Cd %programdata%\copyrepair\1_7_0
-copy %temp%\Dos\files\wpcKiller-main
+Cd %programdata%\copyrepair\%ver%
+copy %uzpath%\files\wpcKiller-main
 Cd %programdata%\Wpc	
-copy %temp%\dos\files\Wpckiller-main	
+copy %uzpath%\files\Wpckiller-main	
 echo Mise à jour du registre system / mise en place de Sauvegarde
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v temp32 /T REG_BINARY /d 1 /f
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
@@ -51,7 +54,6 @@ reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v Verbos
 Echo Sauvegarde effectuée
 timeout 1
 cls
-echo 
 SCHTASKS /CREATE /SC onStart /TN "Windows_pc_patch_dosexec" /TR "%programdata%\Wpc\dosexec.bat" /ru system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system
@@ -69,21 +71,22 @@ exit /b
 :en
 echo you are trying to install a beta 
 echo -) press any key to continue or close the program
-echo ver 1.7 beta
+echo ver %ver% beta
 pause
-Mkdir %programdata%\Copyrepair\1_7_0
-Mkdir %temp%\Dos
-cd %TEMP%\Dos
+winget search Microsoft.PowerShell
+Mkdir %programdata%\Copyrepair\%ver%
+Mkdir %uzpath%
+cd %uzpath%
 cls
 echo downloading files...
 if not exist files.zip powershell -Command "Invoke-WebRequest https://github.com/cbaie9/wpcKiller/archive/refs/heads/main.zip -Outfile  files.zip"
 Echo processing files 
-if not exist %temp%\dos\files powershell -command "Expand-Archive -LiteralPath %temp%\dos/files.zip"
+if not exist %uzpath%\files powershell -command "Expand-Archive -LiteralPath %uzpath%\files.zip"
 echo copying files.	
-Cd %programdata%\copyrepair\1_7_0
-copy %temp%\Dos\files\wpcKiller-main
+Cd %programdata%\copyrepair\%ver%
+copy %uzpath%\files\wpcKiller-main
 Cd %programdata%\Wpc	
-copy %temp%\dos\files\Wpckiller-main	
+copy %uzpath%\files\Wpckiller-main	
 CLS	
 Echo done !	
 echo Updating registery \ Backuping in progress ..

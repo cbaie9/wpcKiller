@@ -3,8 +3,10 @@
                         http://www.apache.org/licenses/
 
 
--) you can use the program in a library but not for sell it
--) contain code of enderman ( Ms-DOS Exploit  https://www.youtube.com/watch?v=XVezorBjHTA )
+-> you can use the program in a library but not for sell it
+-> contain modified version of enderman Ms-DOS Exploit  https://www.youtube.com/watch?v=XVezorBjHTA
+      -> msdebug.bat, msdos.bat, dosexec.bat (en_3, fr_3), win.bat/exit.bat (same code) and reboot.BAT
+
 
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
