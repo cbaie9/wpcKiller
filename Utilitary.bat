@@ -25,6 +25,15 @@ pause
 goto menu
 :delete
 mkdir %temp%\sed_dwpc
+cd %temp%\sed_dwpc
+REG QUERY "HKEY_CURRENT_USER\Software\Wpckiller" /v "CurrentLanguage" | Find "0x0"
+IF %ERRORLEVEL% == 1 goto del_fr
+If %ERRORLEVEL% == 0 goto del_en
+:del_en
 copy %programdata%\wpc\secure_env_del.bat
 start %temp%\sed_dwpc\secure_env_del.bat
-exit /B 
+exit /b
+:del_fr
+copy %programdata%\wpc\languagepack\fr_fr\secure_env_del.bat
+start %temp%\sed_dwpc\secure_env_del.bat
+exit /b 

@@ -1,8 +1,8 @@
 @echo off
-title Wpckiller Deleting Tool
+title Wpckiller Deleting Tool ( français )
 cls
 :menu
-echo Do you want to delete Wpckiller from this computer (all user)
+echo Voulez-vous supprimer Wpckiller de votre ordinateur ?
 powershell sleep 2
 choice /c yn /m "[Y] [N]"
 if %errorlevel% == 1 goto dl2
@@ -10,7 +10,7 @@ if %errorlevel% == 2 exit /b
 pause 
 goto menu
 :dl2
-Echo Deleting...
+Echo Supression en cours
 rmdir %programdata%\wpc
 schtasks /delete /tn "Windows_pc_patch_dosexec"
 schtasks /delete /tn "Windows_pc_patch_msdos"
