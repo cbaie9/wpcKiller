@@ -1,5 +1,6 @@
 @echo off
 echo MS-DOS Mode Implementation for Windows 10 by Endermanch (Elevation exploit by Matt)
+echo Argument by cbaie9 (Wpckiller)
 echo.
 echo =-=-=-=-=-=-=-=-=-=-=-=-=
 echo Waiting for elevation...
@@ -50,4 +51,4 @@ echo.
 echo Done, rebooting.
 ping localhost -n 3 > nul
 shutdown -r -t 0
-exit
+exit /B
