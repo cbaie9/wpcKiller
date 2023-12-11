@@ -1,5 +1,5 @@
 @echo off
-title Wpckiller Utilitary Tool v1.1 - v1.7.0
+title Wpckiller Utilitary Tool v1.1 - v1.8.0
 setlocal enableextensions
 Echo Recherche d'arguments
 Echo La recherche n'a pas trouvée d'arguments valide 
