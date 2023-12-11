@@ -1,5 +1,5 @@
 # wpcKiller
-## ver 1.7.0
+## ver 1.8.01
 bats and exes version
 supporting windows 10 and 11  and need powershell (include in win 7 --> 11 )
 -> 1.7.0 and up : AUTO download required lib (powershell)
