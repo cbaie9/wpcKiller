@@ -1,17 +1,4 @@
 @echo off 
-:menu
-echo #########
-echo warn
-echo non-stable version 
-echo #########
-echo 1) install 
-echo 2) exit and revert change
-choice /c 12 /n /m ""
-echo %errorlevel% 
-if %errorlevel% == 1 goto fr
-if %errorlevel% == 2 goto fr_3
-goto menu
-:fr
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 0 /f 
 net start  
 start explorer  

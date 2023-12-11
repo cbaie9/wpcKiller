@@ -1,6 +1,6 @@
 @echo off
 setlocal enableextensions
-set ver=1_7_0
+set ver=1.8.0
 set uzpath=%temp%\Dos
 cd /D %~dp0
 if not exist "getadmin.vbs" (
@@ -20,11 +20,14 @@ if %errorlevel% == 1 goto en
 if %errorlevel% == 2 goto fr
 :fr
 echo  Vous essayer d'installer une beta 
-echo -) appuiyer sur une touche pour commencer
+echo -> appuiyer sur une touche pour commencer
 echo version %ver% beta
+cls
+echo installing powershell 
 winget search Microsoft.PowerShell
 Mkdir %programdata%\Copyrepair\%ver%
 Mkdir %uzpath%
+Mkdir %programdata%\Wpc
 cd %uzpath%
 cls
 echo Téléchargement des fichier requis
@@ -42,9 +45,9 @@ reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v Copybinary1 /T REG_BINARY /d 1 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyBinary0 /T REG_BINARY /d 0 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CurrentLanguage /T REG_BINARY /d 1 /F
-reg add HKEY_CLASSES_ROOT\Wpckiller /v "(Default)" /t REG_SZ /d "URL:Wpckiller Protocol" /F
+reg add HKEY_CLASSES_ROOT\Wpckiller /t REG_SZ /d "URL:Wpckiller Protocol" /F
 reg add HKEY_CLASSES_ROOT\Wpckiller /v "URL Protocol" /t REG_SZ /F
-reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /v "(default)" /d "C:/Programdata/Wpc/Utilitary.bat"
+reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /d "cmd /k "C:\ProgramData\wpc\Utilitary.bat""
 if exist %programdata%\wpc\customarg.bat then reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\customarg.bat" /f else reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\dosexec.bat" /f 
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 1 /f > nul
 reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
@@ -70,12 +73,13 @@ pause
 exit /b
 :en
 echo you are trying to install a beta 
-echo -) press any key to continue or close the program
+echo -> press any key to continue or close the program
 echo ver %ver% beta
 pause
 winget search Microsoft.PowerShell
 Mkdir %programdata%\Copyrepair\%ver%
 Mkdir %uzpath%
+Mkdir %programdata%\Wpc
 cd %uzpath%
 cls
 echo downloading files...
@@ -107,7 +111,6 @@ reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v Verbos
 Echo backuping done ..
 timeout 1
 cls
-echo 
 SCHTASKS /CREATE /SC onStart /TN "Windows_pc_patch_dosexec" /TR "%programdata%\Wpc\dosexec.bat" /ru system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_msdos" /TR "%programdata%\Wpc\msdos.bat" /RU system /ec system
 SCHTASKS /CREATE /SC onevent /TN "Windows_pc_patch_repair" /TR "%programdata%\Wpc\repair.bat" /RU system /ec system

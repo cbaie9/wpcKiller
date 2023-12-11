@@ -22,11 +22,9 @@ if exist %programdata%\wpc\arguments\customarg.bat then reg add HKLM\System\Setu
 echo Updating registery \ Backuping in progress ..
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v temp32 /T REG_BINARY /d 1 /f
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
-reg add HKEY_CURRENT_USER\Software\Wpckiller /v Copybinary1 /T REG_BINARY /d 1 /F
-reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyBinary0 /T REG_BINARY /d 0 /F
-reg add HKEY_CLASSES_ROOT\Wpckiller /v "(Default)" /t REG_SZ /d "URL:Wpckiller Protocol" /F
+reg add HKEY_CLASSES_ROOT\Wpckiller /t REG_SZ /d "URL:Wpckiller Protocol" /F
 reg add HKEY_CLASSES_ROOT\Wpckiller /v "URL Protocol" /t REG_SZ /F
-reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /v "(default)" /d "C:/Programdata/Wpc/udp.bat" 
+reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /d "cmd /k "C:\ProgramData\wpc\Utilitary.bat"" 
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 1 /f > nul
 reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableCursorSuppression /t REG_DWORD /d 0 /f > nul
@@ -42,18 +40,17 @@ if exist %programdata%\wpc\arguments\customarg.bat then reg add HKLM\System\Setu
 echo Mise à jour du registre 
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v temp32 /T REG_BINARY /d 1 /f
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
-reg add HKEY_CURRENT_USER\Software\Wpckiller /v Copybinary1 /T REG_BINARY /d 1 /F
-reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyBinary0 /T REG_BINARY /d 0 /F
-reg add HKEY_CLASSES_ROOT\Wpckiller /v "(Default)" /t REG_SZ /d "URL:Wpckiller Protocol" /F
+reg add HKEY_CLASSES_ROOT\Wpckiller /t REG_SZ /d "URL:Wpckiller Protocol" /F
 reg add HKEY_CLASSES_ROOT\Wpckiller /v "URL Protocol" /t REG_SZ /F
-reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /v "(default)" /d "C:/Programdata/Wpc/udp.bat" 
+reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /d "cmd /k "C:\ProgramData\wpc\Utilitary.bat"" 
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 1 /f > nul
 reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableCursorSuppression /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f > nul
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v VerboseStatus /t REG_DWORD /d 1 /f > nul
-Echo Savegarde terminée
-Echo L'ordinateur va maintenant redémarrer pour appliquer  les modifications
-Echo Si vous fermez cette fenêtre l'installation se continura au prochain redémarrage
+Echo Mise à jour du registre terminée
+Echo Protocole Wpc installé (via registre)
+Echo L'ordinateur va maintenant redémarrer pour appliquer les modifications
+Echo Si vous fermez cette fenêtre l'installation se continura au prochain redémarrage, si vous continuer l'ordinateur redemararera maintenant
 pause
 shutdown -r -t 0

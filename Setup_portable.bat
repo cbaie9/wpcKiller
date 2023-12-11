@@ -1,5 +1,5 @@
 @echo off
-set ver=1_7_0
+set ver=1.8.0
 set uzpath=%cd%
 setlocal enableextensions
 Mkdir %programdata%\Copyrepair\%ver%
@@ -13,9 +13,9 @@ reg add HKEY_CURRENT_USER\Software\Wpckiller /v CopyRepair /T REG_BINARY /d 1 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v Wpc_portable /T REG_BINARY /d 1 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v Wpc_arg /T REG_DWORD /d -1 /F
 reg add HKEY_CURRENT_USER\Software\Wpckiller /v CurrentLanguage /T REG_BINARY /d 0 /F
-reg add HKEY_CLASSES_ROOT\Wpckiller /v "(Default)" /t REG_SZ /d "URL:Wpckiller Protocol" /F
+reg add HKEY_CLASSES_ROOT\Wpckiller /t REG_SZ /d "URL:Wpckiller Protocol" /F
 reg add HKEY_CLASSES_ROOT\Wpckiller /v "URL Protocol" /t REG_SZ /F
-reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /v "(default)" /d "C:/Programdata/Wpc/Utilitary.bat"
+reg add HKEY_CLASSES_ROOT\Wpckiller\shell\open\command /d "cmd /k "C:\ProgramData\wpc\Utilitary.bat""
 if exist "%programdata%\wpc\arguments\customarg.bat" then reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\customarg.bat" /f else reg add HKLM\System\Setup /v CmdLine /t REG_SZ /d "cmd.exe /k %programdata%\Wpc\dosexec.bat" /f
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 1 /f > nul
 reg add HKLM\System\Setup /v SetupType /t REG_DWORD /d 2 /f > nul
