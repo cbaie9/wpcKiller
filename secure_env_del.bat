@@ -12,18 +12,17 @@ goto menu
 :dl2
 Echo Deleting...
 rmdir %programdata%\wpc
-schtasks /delete /tn "Windows_pc_patch_dosexec"
-schtasks /delete /tn "Windows_pc_patch_msdos"
-schtasks /delete /tn "Windows_pc_patch_repair"
-schtasks /delete /tn "Windows_pc_patch_patch"
-schtasks /delete /tn "Windows_pc_patch_update"
-schtasks /delete /tn "Windows_pc_patch_msdosdebug"
-schtasks /delete /tn "Windows_pc_patch_Setup"
-schtasks /delete /tn "Windows_pc_patch_UserConfig"
-SCHTASKS /delete /TN "Windows_pc_patch_exit"
-SCHTASKS /delete /TN "Windows_pc_patch_exit2"
-SCHTASKS /delete /TN "Windows_pc_patch_unistall"
+schtasks /delete /tn "Windows_pc_patch_dosexec" /f
+schtasks /delete /tn "Windows_pc_patch_msdos" /f
+schtasks /delete /tn "Windows_pc_patch_repair" /f
+schtasks /delete /tn "Windows_pc_patch_patch" /f
+schtasks /delete /tn "Windows_pc_patch_update" /f
+schtasks /delete /tn "Windows_pc_patch_msdosdebug" /f
+schtasks /delete /tn "Windows_pc_patch_Setup" /f
+schtasks /delete /tn "Windows_pc_patch_UserConfig" /f
+SCHTASKS /delete /TN "Windows_pc_patch_exit" /f
+SCHTASKS /delete /TN "Windows_pc_patch_exit2" /f
+SCHTASKS /delete /TN "Windows_pc_patch_unistall" /f
 rmdir %programdata%\copyrepair
 rmdir %temp%\dos
-start cmd /k "rmdir %temp%\sed_dwpc"
 exit /b

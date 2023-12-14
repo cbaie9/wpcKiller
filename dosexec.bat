@@ -1,5 +1,7 @@
 @echo off 
+title Starting installation
 reg add HKLM\System\Setup /v SystemSetupInProgress /t REG_DWORD /d 0 /f 
+
 net start  
 start explorer  
 ping localhost -n 3  
@@ -7,21 +9,16 @@ ping localhost -n 3
 echo starting...
 powershell stop-service wpcmonsvc
 powershell sleep 1 
-If exist C:\Program Files (x86)\Contrôle Parental Orange goto cp_or
+If exist "C:\Program Files (x86)\Contrôle Parental" Orange goto cp_or
+:cpwin
 IF exist %programdata%\wpc\languagepack\fr_fr goto fr_1 else goto en_1
-:fr_1
-echo Check driver 1 : status ok
-goto cp_win
 :en_1
-echo Verification du driver 1 : status bon
-goto cp_win
-:cp_win
-IF exist %programdata%\wpc\languagepack\fr_fr goto fr_2 else goto en_2
-:en_2
+echo Check driver 1 : status ok
 echo updating.. 
 title Updating system
 goto cpwin2
-:fr_2
+:fr_1
+echo Verification du driver 1 : status bon
 echo Driver en cours d'installation
 title Mise à jour en cours
 goto cpwin2
@@ -68,7 +65,7 @@ rmdir %systemroot%\WinSxS\wow64_microsoft-windows-p..lcontrols-webfilter_31bf385
 Del C:\Windows\SysWOW64\WpcWebFilter.dll /q
 IF exist %programdata%\wpc\languagepack\fr_fr goto fr_3 else goto en_3
 :en_3
-echo Driver n°2 mis a jour at v1.7.0
+echo Driver n°2 mis a jour at v1.8.02
 title Rédemarrage..
 powershell sleep 1
 echo Rédemarrage
@@ -80,7 +77,7 @@ echo.
 echo Starting the file... 
 goto cpwin3
 :fr_3 
-echo Driver n°2 updated at v1.7.0
+echo Driver n°2 updated at v1.8.02
 title Rebooting 
 powershell sleep 1
 echo rebooting..
@@ -90,7 +87,7 @@ echo Running as NT AUTHORITY, no elevation needed
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 echo.
 echo Lancement du fichier
-echo redemarrage de l'ordinateur après le chargement de la Sauvegarde du registre 
+echo Redemarrage de l'ordinateur après le chargement de la Sauvegarde du registre 
 goto cpwin3
 :cpwin3
 ping localhost -n 2 > nul
@@ -104,6 +101,9 @@ reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v Enable
 reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v VerboseStatus /t REG_DWORD /d 0 /f > nul
 schtasks /change /disable /tn Windows_pc_patch_dosexec
 echo.
+goto reboot
+:reboot
+title Rebooting...
 echo Done, rebooting. (3 attempts)
 echo Attempt #1
 shutdown -r -t 0
@@ -115,43 +115,33 @@ echo Failed. Attempt #3
 shutdown -r -t 0
 echo Failed. If Windows hasn't rebooted yet, try resetting the machine.
 title failed To reboot
+pause
 echo Try to type exit or shutdown -r
 echo You are at & dir
-@echo on
-cmd
+Title System user - %systemroot%\system32\cmd.exe
 @echo off
-echo
-shutdown -r -t 0
-ping localhost -n 3 > nul
-echo Failed. Attempt #2
-shutdown -r -t 0
-ping localhost -n 3 > nul
-echo Failed. Attempt #3
-shutdown -r -t 0
 cmd
-exit /B
+goto reboot
 :cp_or
-cd C:\Program Files (x86)\
-rmdir "Contrôle Parental Orange" /S /Q
-Cd %programdata%
-rmdir "Contrôle Parental Orange" /S /Q
+rd "C:\Program Files (x86)\Contrôle Parental" /s /q 
+rd "%programdata%\Contrôle Parental Orange" /S /Q
 cd %systemROOT%\System32\drivers
-del cpwnetfilter.sys /q
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run\[@]Contrôle Parental Orange v7
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run\[@]CPDisplayContent
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayName
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]Publisher
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]VersionMajor
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]VersionMinor
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallTag
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayIcon
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallLocation
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]UninstallString
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayVersion
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]HelpLink
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]EstimatedSize
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]PasswordType 
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallationProgress
+del cpwnetfilter.sys /q /s
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run\[@]Contrôle Parental Orange v7 /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run\[@]CPDisplayContent /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayName /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]Publisher /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]VersionMajor /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]VersionMinor /f 
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallTag /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayIcon /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallLocation /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]UninstallString /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]DisplayVersion /f 
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]HelpLink /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]EstimatedSize /f 
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]PasswordType /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ocsvc\[@]InstallationProgress /f
 del %temp% /s /q
 goto cp_win
 # made by cb9,cbaie9 2020-2023
